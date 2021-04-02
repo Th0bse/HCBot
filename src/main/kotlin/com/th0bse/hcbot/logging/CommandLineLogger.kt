@@ -3,18 +3,14 @@ package com.th0bse.hcbot.logging
 import java.time.LocalDateTime
 
 class CommandLineLogger : Logger {
-    override val defaultLogLevel: String = "INFO"
+    override var defaultLogLevel: LogLevel = LogLevel.INFO
 
-    override fun writeLogMessage(logLevel: String, message: String) {
+    override fun writeLogMessage(logLevel: LogLevel, message: String) {
         println(buildLogMessage(logLevel, message))
     }
 
-    override fun setDefaultLogLevel(logLevel: String) {
-        TODO("Not yet implemented")
-    }
-
-    private fun buildLogMessage(logLevel: String, message: String): String {
+    private fun buildLogMessage(logLevel: LogLevel, message: String): String {
         val currentTime = LocalDateTime.now()
-        return "$currentTime | $logLevel | $message"
+        return "$currentTime | ${logLevel.displayName} | $message"
     }
 }
