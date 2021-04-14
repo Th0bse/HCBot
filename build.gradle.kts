@@ -19,6 +19,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 
     implementation("dev.kord:kord-core:0.7.0-SNAPSHOT")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.test {
@@ -31,4 +32,12 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClassName = "com.th0bse.hcbot.HCBot"
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
