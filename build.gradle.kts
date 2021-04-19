@@ -18,7 +18,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 
-    implementation("dev.kord:kord-core:0.7.0-SNAPSHOT")
+    implementation("dev.kord:kord-core:0.7.x-SNAPSHOT")
     implementation(kotlin("stdlib-jdk8"))
 }
 
