@@ -14,11 +14,12 @@ repositories {
 }
 
 dependencies {
+    implementation("org.junit.jupiter:junit-jupiter:5.7.0")
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
 
-    implementation("dev.kord:kord-core:0.7.x-SNAPSHOT")
+    implementation("dev.kord:kord-core:0.7.0-RC2")
     implementation(kotlin("stdlib-jdk8"))
 }
 
@@ -40,4 +41,10 @@ compileKotlin.kotlinOptions {
 val compileTestKotlin: KotlinCompile by tasks
 compileTestKotlin.kotlinOptions {
     jvmTarget = "1.8"
+}
+
+tasks.create("updateTeamCityVersionNumber") {
+    this.doFirst {
+        println("##teamcity[versionNumber '$version']")
+    }
 }

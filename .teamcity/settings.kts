@@ -42,6 +42,10 @@ object Build : BuildType({
 
     steps {
         gradle {
+            tasks = "updateTeamCityVersionNumber"
+            gradleWrapperPath = ""
+        }
+        gradle {
             tasks = "clean build"
             gradleWrapperPath = ""
         }
