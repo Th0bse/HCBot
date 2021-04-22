@@ -1,3 +1,5 @@
+@file: Suppress("JAVA_MODULE_DOES_NOT_EXPORT_PACKAGE")
+
 import jdk.jfr.internal.Utils
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.gradle
