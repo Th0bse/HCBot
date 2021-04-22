@@ -13,5 +13,8 @@ changeBuildType(RelativeId("Build")) {
         add {
             param("system.versionNumber", "")
         }
+        add {
+            param("versionNumber", "stuff")
+        }
     }
 }
