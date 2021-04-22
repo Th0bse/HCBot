@@ -45,7 +45,6 @@ compileTestKotlin.kotlinOptions {
 
 tasks.create("updateTeamCityVersionNumber") {
     this.doFirst {
-        println("##teamcity[setParameter name='versionNumber' value='$version']")
-        println("%versionNumber%")
+        println("##teamcity[buildNumber '$version']")
     }
 }
