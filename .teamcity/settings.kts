@@ -1,3 +1,4 @@
+import jdk.jfr.internal.Utils
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
@@ -34,7 +35,7 @@ project {
 object Build : BuildType({
     name = "Commit Stage"
 
-    buildNumberPattern = "%build.number%-%build.counter%"
+    buildNumberPattern = "%build.counter%"
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
