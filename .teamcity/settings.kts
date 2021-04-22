@@ -37,7 +37,7 @@ project {
 object Build : BuildType({
     name = "Commit Stage"
 
-    buildNumberPattern = "%build.number%-%build.counter%"
+    buildNumberPattern = "%build.number%"
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
@@ -53,6 +53,7 @@ object Build : BuildType({
             tasks = "clean build"
             gradleWrapperPath = ""
         }
+
     }
 
     triggers {
