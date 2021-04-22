@@ -1,6 +1,8 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -13,4 +15,23 @@ changeBuildType(RelativeId("Build")) {
         "Unexpected option value: buildNumberPattern = $buildNumberPattern"
     }
     buildNumberPattern = "%build.counter%"
+
+    expectSteps {
+        gradle {
+            tasks = "updateTeamCityVersionNumber"
+            gradleWrapperPath = ""
+        }
+        gradle {
+            tasks = "clean build"
+            gradleWrapperPath = ""
+        }
+    }
+    steps {
+        insert(2) {
+            script {
+                name = "set build number"
+                scriptContent = """echo "this is a test""""
+            }
+        }
+    }
 }
