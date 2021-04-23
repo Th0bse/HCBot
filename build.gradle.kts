@@ -45,7 +45,7 @@ compileTestKotlin.kotlinOptions {
 
 tasks.create("updateTeamCityVersionNumber") {
     this.doFirst {
-        val tcBuildCounter = System.getProperty("build.counter")
-        println("##teamcity[buildNumber '$version-$tcBuildCounter']")
+        val teamcity: Map<*, *> by project
+        println("##teamcity[buildNumber '$version-${teamcity["build.counter"]}")
     }
 }
