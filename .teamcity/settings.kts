@@ -46,11 +46,11 @@ object Build : BuildType({
 
     steps {
         gradle {
-            tasks = "clean build"
+            tasks = "updateTeamCityVersionNumber"
             gradleWrapperPath = ""
         }
         gradle {
-            tasks = "updateTeamCityVersionNumber"
+            tasks = "clean build"
             gradleWrapperPath = ""
         }
     }
