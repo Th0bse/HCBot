@@ -37,7 +37,7 @@ project {
 object Build : BuildType({
     name = "Commit Stage"
 
-    buildNumberPattern = "%versionNumber%-%build.counter%"
+    buildNumberPattern = "%build.number%"
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
