@@ -9,12 +9,10 @@ import org.junit.jupiter.api.BeforeAll
 
 internal class CommandRegistryTest {
 
-    val commandRegistry = CommandRegistry()
-
     @Test
     fun registerCommand() {
-        commandRegistry.registerCommand(TestCommand)
-        assertEquals(commandRegistry.getCommand("testCommand"), TestCommand)
+        CommandRegistry.registerCommand(TestCommand)
+        assertEquals(CommandRegistry.getCommand("testCommand"), TestCommand)
     }
 
     // Command object used for testing. We create this here and don't use an existing command like Ping, to have full

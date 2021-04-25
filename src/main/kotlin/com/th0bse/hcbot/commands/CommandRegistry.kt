@@ -3,7 +3,7 @@ package com.th0bse.hcbot.commands
 /**
  * The CommandRegistry holds references to all Command objects, and gives other classes access to those commands.
  */
-class CommandRegistry {
+object CommandRegistry {
     val commands: HashMap<String, Command> = HashMap()
 
     /**

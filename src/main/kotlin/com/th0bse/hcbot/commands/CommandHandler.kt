@@ -1,16 +1,22 @@
 package com.th0bse.hcbot.commands
 
 import com.th0bse.hcbot.HCBot
+import com.th0bse.hcbot.logging.LogLevel
 import dev.kord.core.event.message.MessageCreateEvent
+import org.reflections.Reflections
 
 class CommandHandler {
-    private val registry: CommandRegistry = CommandRegistry()
     val prefix: String = "!"
 
     init {
-        registry.registerCommand(Ping)
+        val reflections = Reflections("com.th0bse.hcbot.commands")
+        val commands = reflections.getSubTypesOf(Command::class.java)
+        for (c in commands) {
+            HCBot.logger.writeLogMessage(LogLevel.DEBUG, "Registering Command ${c.name}")
+            val objectInstance = c.kotlin.objectInstance
+            objectInstance?.registerCommand(objectInstance)
+        }
     }
-
     /**
      * Parse a message to a command.
      *
@@ -27,7 +33,7 @@ class CommandHandler {
             val commandString = messageSplit[0]
             var command: Command? = null
             try {
-                command = registry.getCommand(commandString)
+                command = CommandRegistry.getCommand(commandString)
             } catch (e: RuntimeException) {
                 HCBot.logger.writeLogMessage(message = e.message!!)
             }
