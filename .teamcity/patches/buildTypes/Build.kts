@@ -1,6 +1,7 @@
 package patches.buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.ui.*
 
 /*
@@ -13,4 +14,19 @@ changeBuildType(RelativeId("Build")) {
         "Unexpected option value: allowExternalStatus = $allowExternalStatus"
     }
     allowExternalStatus = true
+
+    features {
+        add {
+            commitStatusPublisher {
+                vcsRootExtId = "${DslContext.settingsRoot.id}"
+                publisher = github {
+                    githubUrl = "https://api.github.com"
+                    authType = personalToken {
+                        token = "credentialsJSON:80e454be-d677-473c-918b-3ba92e7b10bf"
+                    }
+                }
+                param("github_oauth_user", "th0bse")
+            }
+        }
+    }
 }
