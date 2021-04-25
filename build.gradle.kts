@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.th0bse"
-version = "0.0.1"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -21,6 +21,8 @@ dependencies {
 
     implementation("dev.kord:kord-core:0.7.0-RC2")
     implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.32")
+    implementation("org.reflections:reflections:0.9.12")
 }
 
 tasks.test {
