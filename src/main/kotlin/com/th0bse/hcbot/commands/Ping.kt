@@ -13,9 +13,4 @@ object Ping: Command {
     override suspend fun execute(event: MessageCreateEvent) {
         event.message.getChannel().createMessage("Pong")
     }
-
-    // currently never gets called, since the feature to supply arguments when calling a command is not yet implemented
-    override suspend fun printDescription(event: MessageCreateEvent) {
-        event.message.getChannel().createMessage(description)
-    }
 }

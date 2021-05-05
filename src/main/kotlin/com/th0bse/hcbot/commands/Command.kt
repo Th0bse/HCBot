@@ -34,6 +34,8 @@ interface Command {
      *
      * @param event The MessageCreateEvent containing the message in which the user issued the command
      */
-    suspend fun printDescription(event: MessageCreateEvent)
+    suspend fun printDescription(event: MessageCreateEvent) {
+        event.message.getChannel().createMessage(description)
+    }
 
 }
