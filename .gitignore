@@ -81,3 +81,6 @@ bot.properties
 out/
 .idea_modules/
 .idea/httpRequests
+
+# ignore files of the internal DB
+db/
