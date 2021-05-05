@@ -2,6 +2,9 @@ package com.th0bse.hcbot
 
 import com.th0bse.hcbot.commands.CommandHandler
 import com.th0bse.hcbot.logging.CommandLineLogger
+import com.th0bse.hcbot.storage.DatabaseStorageProvider
+import com.th0bse.hcbot.storage.Message
+import com.th0bse.hcbot.storage.User
 import dev.kord.core.Kord
 import dev.kord.core.event.message.MessageCreateEvent
 import dev.kord.core.on
@@ -42,7 +45,10 @@ class HCBot {
             logger.writeLogMessage(message = message.content)
             commandHandler.parse(this)?.execute(this)
             // TODO: 4/2/21 move command parsing and execution out of registerListeners()
+            val user = User(message.author!!.username, message.author!!.tag, message.author!!.id.asString)
+            DatabaseStorageProvider.addMessage(Message(user, message.timestamp, message.content))
         }
+
     }
 
     /**
