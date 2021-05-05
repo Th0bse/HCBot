@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.4.31"
+    idea
     application
 }
 
@@ -23,6 +24,11 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.4.32")
     implementation("org.reflections:reflections:0.9.12")
+
+    // JetBrains Xodus
+    implementation("org.jetbrains.xodus:xodus-entity-store:1.3.232")
+    implementation("org.jetbrains.xodus:xodus-environment:1.3.232")
+    implementation("org.jetbrains.xodus:xodus-vfs:1.3.232")
 }
 
 tasks.test {
