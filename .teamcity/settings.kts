@@ -37,6 +37,7 @@ project {
 object Build : BuildType({
     name = "Commit Stage"
 
+    allowExternalStatus = true
     buildNumberPattern = "%build.number%"
     publishArtifacts = PublishMode.SUCCESSFUL
 
@@ -72,11 +73,4 @@ object Build : BuildType({
             param("github_oauth_user", "th0bse")
         }
     }
-
-    check(allowExternalStatus == false) {
-        "Unexpected option value: allowExternalStatus = $allowExternalStatus"
-    }
-    allowExternalStatus = true
-
-
 })
