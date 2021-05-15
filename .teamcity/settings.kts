@@ -59,19 +59,24 @@ object Build : BuildType({
         vcs {
         }
     }
+
+    features {
+        commitStatusPublisher {
+            vcsRootExtId = "${DslContext.settingsRoot.id}"
+            publisher = github {
+                githubUrl = "https://api.github.com"
+                authType = personalToken {
+                    token = "credentialsJSON:80e454be-d677-473c-918b-3ba92e7b10bf"
+                }
+            }
+            param("github_oauth_user", "th0bse")
+        }
+    }
+
     check(allowExternalStatus == false) {
         "Unexpected option value: allowExternalStatus = $allowExternalStatus"
     }
     allowExternalStatus = true
 
-    commitStatusPublisher {
-        vcsRootExtId = "${DslContext.settingsRoot.id}"
-        publisher = github {
-            githubUrl = "https://api.github.com"
-            authType = personalToken {
-                token = "credentialsJSON:80e454be-d677-473c-918b-3ba92e7b10bf"
-            }
-        }
-        param("github_oauth_user", "th0bse")
-    }
+
 })
